@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>智慧农业后台管理系统</title>
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <!--首页图标-->
+    <link th:href="@{favicon.ico}" rel="stylesheet"/>
+    <link th:href="@{/css/jquery.contextMenu.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/animate.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/skins.css}" rel="stylesheet"/>
+    <link th:href="@{/ruoyi/css/ry-ui.css?v=4.1.0}" rel="stylesheet"/>
+</head>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden">
+<div id="wrapper">
+
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close">
+            <i class="fa fa-times-circle"></i>
+        </div>
+        <div class="sidebar-collapse" id="wuliu">
+            <ul class="nav" id="side-menu">
+                <li class="logos" style="">
+                    <span class="" style="min-width: 200px;text-align: center;color:#2173fb; font-size: 18px">智慧农业管理系统</span>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-home"></i> <span class="nav-label">主页</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a class="menuItem"   th:href="@{/system/main(homeId=${homeId})}" >返回主页</a></li>
+                    </ul>
+                </li>
+                <li th:each="menu : ${menus}">
+                    <a th:class="@{${menu.url != '' && menu.url != '#'} ? ${menu.target}}"
+                       th:href="@{${menu.url == ''} ? |#| : ${menu.url}}">
+                        <i class="fa fa-bar-chart-o" th:class="${menu.icon}"></i>
+                        <span class="nav-label" th:text="${menu.menuName}">一级菜单</span>
+                        <span th:class="${menu.url == '' || menu.url == '#'} ? |fa arrow|"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li th:each="cmenu : ${menu.children}">
+                            <a th:if="${#lists.isEmpty(cmenu.children)}"
+                               th:class="${cmenu.target == ''} ? |menuItem| : ${cmenu.target}"
+                               th:utext="${cmenu.menuName}" th:href="@{${cmenu.url}}">二级菜单</a>
+                            <a th:if="${not #lists.isEmpty(cmenu.children)}" href="#">[[${cmenu.menuName}]]<span
+                                    class="fa arrow"></span></a>
+                            <ul th:if="${not #lists.isEmpty(cmenu.children)}" class="nav nav-third-level">
+                                <li th:each="emenu : ${cmenu.children}"><a
+                                        th:class="${emenu.target == ''} ? |menuItem| : ${emenu.target}"
+                                        th:text="${emenu.menuName}" th:href="@{${emenu.url}}">三级菜单</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </nav><!---->
+    <!--左侧导航结束-->
+
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+
+        <div class="row border -bottom" >
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <!--<div class="navbar-header">-->
+                <!--<a class="navbar-minimalize minimalize-styl-2" style="color:#FFF;" href="#" title="收起菜单">-->
+                <!--<i class="fa fa-bars"></i>-->
+                <!--</a>-->
+                <!--</div>-->
+                <ul class="navs navbar-top-links navbar-left welcome-message" >
+                    <li class="active"><a href="/index?homeId=1" onclick="wuliuguanli()" class="active menuTab" style="color: #1b69e7">物流管理</a></li>
+                    <li><a href="/index?homeId=2" onclick="cundianguanli()" class="active menuTab" style="color: #666666">村点管理</a></li>
+                    <li><a href="https://peasetech.cn/admin"  class="active menuTab" style="color: #666666">追溯管理</a></li>
+                    <!--<li><a href="javascript:void(0)" onclick="suyuanguanli()" class="active menuTab">溯源管理</a></li>-->
+                    <!--<li><a title="全屏显示" href="javascript:void(0)" id="fullScreen"><i class="fa fa-arrows-alt"></i> 全屏显示</a>-->
+                    </li>
+                </ul>
+                <ul class="nav navbar-top-links navbar-right welcome-message">
+                    <li class="dropdown user-menu">
+                        <a href="javascript:void(0)" class="dropdown-toggle" data-hover="dropdown">
+                            <!--<img th:src="(${user.avatar} == '') ? @{/img/profile.jpg} : @{${user.avatar}}"-->
+                            <!--class="user-image">-->
+                            <span class="hidden-xs">[[${user.userName}]]</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!--<li class="mt5">-->
+                            <!--<a th:href="@{/system/user/profile}" class="menuItem">-->
+                            <!--<i class="fa fa-user"></i> 个人中心</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                            <!--<a onclick="resetPwd()">-->
+                            <!--<i class="fa fa-key"></i> 修改密码</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                            <!--<a onclick="switchSkin()">-->
+                            <!--<i class="fa fa-dashboard"></i> 切换主题</a>-->
+                            <!--</li>-->
+                            <li>
+                                <a th:href="@{logout}">
+                                    <i class="fa fa-sign-out"></i> 退出登录</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row content-tabs">
+            <button class="roll-nav roll-left tabLeft">
+                <i class="fa fa-backward"></i>
+            </button>
+            <nav class="page-tabs menuTabs">
+                <div class="page-tabs-content">
+                    <a href="javascript:;" class="active menuTab" data-id="/system/main">首页</a>
+                </div>
+            </nav>
+
+            <button class="roll-nav roll-right tabRight">
+                <i class="fa fa-forward"></i>
+            </button>
+            <a href="javascript:void(0);" class="roll-nav roll-right tabReload"><i class="fa fa-refresh"></i> 刷新</a>
+        </div>
+
+
+        <a id="ax_close_max" class="ax_close_max" href="#" title="关闭全屏"> <i class="fa fa-times-circle-o"></i> </a>
+
+        <div class="row mainContent" id="content-main">
+            <iframe class="RuoYi_iframe" name="iframe0" width="100%" height="100%" data-id="/system/main"
+                    th:src="@{/system/main(homeId=${homeId})}" frameborder="0" seamless></iframe>
+        </div>
+        <div class="footer">
+            <div class="pull-right">© [[${copyrightYear}]] PinLu Copyright</div>
+        </div>
+    </div>
+    <!--右侧部分结束-->
+</div>
+<!-- 全局js -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/city-picker.data.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/js/jquery.contextMenu.min.js}"></script>
+<script th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
+<script th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+<script th:src="@{/ruoyi/js/ry-ui.js?v=4.1.0}"></script>
+<script th:src="@{/ruoyi/js/common.js?v=4.1.0}"></script>
+<script th:src="@{/ruoyi/index.js}"></script>
+<script th:src="@{/ajax/libs/fullscreen/jquery.fullscreen.js}"></script>
+<script th:inline="javascript">
+    var ctx = [[@{
+        /}]];
+    var skin = storage.get("skin");
+    // 本地主题优先，未设置取系统配置
+    if ($.common.isNotEmpty(skin)) {
+        $("body").addClass(skin.split('|')[0]);
+        $("body").addClass(skin.split('|')[1]);
+    } else {
+        var sideTheme = [[${@config.getKey('sys.index.sideTheme')}]];
+        var skinName = [[${@config.getKey('sys.index.skinName')}]];
+        $("body").addClass(sideTheme);
+        $("body").addClass(skinName);
+    }
+
+    /* 用户管理-重置密码 */
+    function resetPwd() {
+        var url = ctx + 'system/user/profile/resetPwd';
+        $.modal.open("重置密码", url, '770', '380');
+    }
+
+    /* 切换主题 */
+    function switchSkin() {
+        layer.open({
+            type: 2,
+            shadeClose: true,
+            title: "切换主题",
+            area: ["530px", "386px"],
+            content: [ctx + "system/switchSkin", 'no']
+        })
+    }
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+    $(function(){
+         var url = getUrlParam('homeId');
+        $(".navs.navbar-top-links li").removeClass('active');
+        $(".navs.navbar-top-links li:nth-child("+url+")").addClass('active');
+        $(".navs.navbar-top-links li a").css("color","#666");
+        $(".navs.navbar-top-links li:nth-child("+url+") a").css("color","#1b69e7");
+        $(".navs.navbar-top-links li").not(".navs.navbar-top-links li.active").hover(function(){
+            $(this).find("a").css("background","#fff");
+            $(this).find("a").css("color","#1b69e7");
+        },function(){
+            $(this).find("a").css("color","#666");
+        })
+    })
+    // 排除非左侧菜单链接
+    var excludesUrl = ["/system/user/profile"];
+
+    $(function () {
+        var hash = location.hash;
+        if (hash !== '') {
+            var url = hash.substring(1, hash.length);
+            $('a[href$="' + decodeURI(url) + '"]').click();
+            if ($.inArray(url, excludesUrl)) {
+                $('a[href$="' + url + '"]').parent("li").addClass("selected").parents("li").addClass("active").end().parents("ul").addClass("in");
+            }
+        }
+    });
+</script>
+
+
+</body>
+</html>

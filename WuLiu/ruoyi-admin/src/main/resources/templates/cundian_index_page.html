@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/jdbc">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<style>
+    img {
+        display: inline-block;
+        height: auto;
+        width: 100%;
+        background-size: cover
+    }
+</style>
+<body>
+
+<div>
+<img src="" id="page">
+
+</div>
+</body>
+<th:block th:include="include :: sparkline-js"/>
+<script th:inline="javascript">
+
+    window.onload = function(){
+        var name= [[${pageUrl}]];
+        document.getElementById("page").src ="/"+name;
+    　}
+
+</script>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--360浏览器优先以webkit内核解析-->
+    <title>若依介绍</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="../static/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link href="../static/css/main/animate.min.css" th:href="@{/css/main/animate.min.css}" rel="stylesheet"/>
+    <link href="../static/css/main/style.min862f.css" th:href="@{/css/main/style.min862f.css}" rel="stylesheet"/>
+    <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/drilldown.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/themes/grid-light.js"></script>
+
+    <style>
+        li, ul, p {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .l_button {
+            background: url(../static/img/cundianmin9.png) no-repeat;
+            background-size: 100% 100%;
+            width: 100%;
+            height: 14.8vw;
+        }
+
+        .filetext {
+            text-align: left;
+            color: #a5a6a7;
+            font-size: 6px;
+            padding-left: 27px;
+            line-height: 100%;
+        }
+
+        .filephone {
+            text-align: right;
+            color: #406fea;
+            font-size: 6px;
+            padding-right: 32px;
+            line-height: 100%;
+        }
+
+        .filetop {
+            padding-top: 10.5vw;
+            text-align: left;
+            font-size: 6px;
+            padding-left: 10px;
+            color: #ffffff;
+        }
+
+        .filetoptext {
+            text-align: left;
+            font-size: 5px;
+            padding-left: 10px;
+            color: red;
+        }
+
+        .content-top {
+            width: calc(97vw);
+            height: calc(100vh - 3vw);
+            padding-top: 2.5vw;
+            padding-right: 4vw;
+            padding-left: 4vw;
+
+        }
+
+        .content-top2 {
+            width: calc(89vw);
+            height: calc(100vh - 5.5vw);
+        }
+
+    </style>
+</head>
+
+<body class="gray-bg">
+<div style="padding:2%;">
+    <!--外边一圈-->
+    <div style="width:100%;height:100%;border-radius:10px;background:#fff;">
+        <div style="overflow:auto;">
+
+            <!--左右两个div-->
+            <!--左边的-->
+            <div id="leftpage" style="float: left;width: 67.5%;padding:3%;">
+                <!--上下两层-->
+                <!--图片-->
+                <div style="overflow:auto;">
+                    <div style="position:relative;float:left;width: 65%;">
+                        <img src="/img/cundianmin5.png" style="width:100%"/>
+                        <p style="position:absolute;bottom:10px;color:#fff;left:5%;font-size:14px;">
+                            农业最新政策<br/>
+                            <span style="color:#999;font-size:12px;">2019年国家颁布了最新的农业政策,鼓励农民种植大棚...</span>
+                        </p>
+                    </div>
+
+                    <div style="width:calc(35% - 20px);margin-left:20px;float:left;">
+                        <div style="width:100%;margin-bottom:2%;position: relative;">
+                            <img src="/img/cundianmin9.png" style="width:100%"/>
+                            <img src="/img/jian.png" style="width:10%;position:absolute;top:0;left:5%;"/>
+                            <p style="position:absolute;bottom:10px;color:#fff;left:5%;font-size:14px;">
+                                农业最新政策<br/>
+                                <span style="color:#999;font-size:12px;">2019年国家颁布了最新的农业政策,鼓励农民种植大棚...</span>
+                            </p>
+                        </div>
+                        <div style="width:100%;position: relative;">
+                            <img src="/img/cundianmin9.png" style="width:100%"/>
+                            <img src="/img/jian.png" style="width:10%;position:absolute;top:0;left:5%;"/>
+                            <p style="position:absolute;bottom:10px;color:#fff;left:5%;font-size:14px;">
+                                农业最新政策<br/>
+                                <span style="color:#999;font-size:12px;">2019年国家颁布了最新的农业政策,鼓励农民种植大棚...</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:20px;">
+                    <ul style="overflow: auto;">
+                        <li style="float:left;width:33.33%;overflow:auto;" onclick="window.open('https://www.baidu.com')">
+                            <img src="/img/dundianmin6.png" style="width:95%;float:left;">
+                            <div style="width:95%;">
+                                <p style="font-size:16px;color:#406fea;clear:both;padding:8px 0 5px;">红富士苹果</p>
+                                <p style="font-size:12px;color:#999;margin-bottom:3px;">2019年克雷登斯费劲啊流口水的房间里卡时间段弗兰克</p>
+                                <p style="font-size:12px;color:#406fea;">tel:123456789</p>
+                </div>
+                        </li>
+                        <li style="float:left;width:33.33%;">
+                            <img src="/img/dundianmin6.png" style="width:95%;display:block;margin:0 auto;">
+                            <div style="width:95%;margin:0 auto;">
+                                <p style="font-size:16px;color:#406fea;clear:both;padding:8px 0 5px;">红富士苹果</p>
+                                <p style="font-size:12px;color:#999;margin-bottom:3px;">2019年克雷登斯费劲啊流口水的房间里卡时间段弗兰克</p>
+                                <p style="font-size:12px;color:#406fea;">tel:123456789</p>
+                            </div>
+                        </li>
+                        <li style="float:left;width:33.33%;overflow:auto;">
+                            <img src="/img/dundianmin6.png" style="width:95%;float:right;">
+                            <div style="width:95%;float:right;">
+                                <p style="font-size:16px;color:#406fea;clear:both;padding:8px 0 5px;">红富士苹果</p>
+                                <p style="font-size:12px;color:#999;margin-bottom:3px;">2019年克雷登斯费劲啊流口水的房间里卡时间段弗兰克</p>
+                                <p style="font-size:12px;color:#406fea;">tel:123456789</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+            <!--右边的-->
+            <div id="rightpage" style="float: right;width: 32.5%;padding:3%; ">
+                <div style="width: 100%; padding-right: 5%">
+                    <!--<div>-->
+                    <!--<p style="color:#406fea;left:5%;font-size:14px; float: left">Weather 天气</p>-->
+                    <!--<div style="background:#dceaff;float: right;width: 50% ;height: 15px "></div>-->
+                    <!--</div>-->
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>实时排名情况</h5>
+                            <div class="ibox-tools">
+                                <!--<a class="collapse-link">-->
+                                <!--<i class="fa fa-chevron-up"></i>-->
+                                <!--</a>-->
+                                <!--<a class="close-link">-->
+                                <!--<i class="fa fa-times"></i>-->
+                                <!--</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table table-hover no-margins">
+                            <thead>
+                            <tr>
+                                <th>排序</th>
+                                <th>村点名称</th>
+                                <th>访问量</th>
+                                <!--<th>值</th>-->
+                            </tr>
+                            </thead>
+                            <tbody id="recentlyNum">
+                            <tr>
+                                <td>1</td>
+                                <td>xx村</td>
+                                <td>15</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/ajax/libs/flot/jquery.flot.js}"></script>
+
+<th:block th:include="include :: sparkline-js"/>
+<script th:inline="javascript">
+
+
+</script>
+</html>

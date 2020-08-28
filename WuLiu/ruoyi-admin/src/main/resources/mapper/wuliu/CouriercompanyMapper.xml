@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.wuliu.mapper.WuliuCouriercompanyMapper">
+
+    <resultMap type="WuliuCouriercompany" id="WuliuCouriercompanyResult">
+        <result property="updateTime"    column="update_time"    />
+        <result property="updatep"    column="updatep"    />
+        <result property="couriercompany"    column="couriercompany"    />
+        <result property="id"    column="id"    />
+        <result property="theName"    column="the_name"    />
+        <result property="address"    column="address"    />
+        <result property="theNamePhone"    column="the_name_phone"    />
+    </resultMap>
+
+    <sql id="selectWuliuCouriercompanyVo">
+        select update_time, updatep, couriercompany, id, the_name, address, the_name_phone from wuliu_couriercompany
+    </sql>
+
+    <select id="selectWuliuCouriercompanyList" parameterType="WuliuCouriercompany" resultMap="WuliuCouriercompanyResult">
+        <include refid="selectWuliuCouriercompanyVo"/>
+        <where>
+            <if test="couriercompany != null  and couriercompany != ''"> and couriercompany = #{couriercompany}</if>
+            <if test="theName != null  and theName != ''"> and the_name like concat('%', #{theName}, '%')</if>
+        </where>
+    </select>
+
+    <select id="selectWuliuCouriercompanyById" parameterType="Long" resultMap="WuliuCouriercompanyResult">
+        <include refid="selectWuliuCouriercompanyVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertWuliuCouriercompany" parameterType="WuliuCouriercompany" useGeneratedKeys="true" keyProperty="id">
+        insert into wuliu_couriercompany
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="updateTime != null ">update_time,</if>
+            <if test="updatep != null  and updatep != ''">updatep,</if>
+            <if test="couriercompany != null  and couriercompany != ''">couriercompany,</if>
+            <if test="theName != null  and theName != ''">the_name,</if>
+            <if test="address != null  and address != ''">address,</if>
+            <if test="theNamePhone != null  and theNamePhone != ''">the_name_phone,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="updateTime != null ">#{updateTime},</if>
+            <if test="updatep != null  and updatep != ''">#{updatep},</if>
+            <if test="couriercompany != null  and couriercompany != ''">#{couriercompany},</if>
+            <if test="theName != null  and theName != ''">#{theName},</if>
+            <if test="address != null  and address != ''">#{address},</if>
+            <if test="theNamePhone != null  and theNamePhone != ''">#{theNamePhone},</if>
+        </trim>
+    </insert>
+
+    <update id="updateWuliuCouriercompany" parameterType="WuliuCouriercompany">
+        update wuliu_couriercompany
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="updateTime != null ">update_time = #{updateTime},</if>
+            <if test="updatep != null  and updatep != ''">updatep = #{updatep},</if>
+            <if test="couriercompany != null  and couriercompany != ''">couriercompany = #{couriercompany},</if>
+            <if test="theName != null  and theName != ''">the_name = #{theName},</if>
+            <if test="address != null  and address != ''">address = #{address},</if>
+            <if test="theNamePhone != null  and theNamePhone != ''">the_name_phone = #{theNamePhone},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteWuliuCouriercompanyById" parameterType="Long">
+        delete from wuliu_couriercompany where id = #{id}
+    </delete>
+
+    <delete id="deleteWuliuCouriercompanyByIds" parameterType="String">
+        delete from wuliu_couriercompany where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

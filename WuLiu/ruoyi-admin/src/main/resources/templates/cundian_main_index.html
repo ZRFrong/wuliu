@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--360浏览器优先以webkit内核解析-->
+    <title>平陆县村点管理系统</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/modal.open/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link href="/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link href="/css/main/animate.min.css" th:href="@{/css/main/animate.min.css}" rel="stylesheet"/>
+    <link href="/css/main/style.min862f.css" th:href="@{/css/main/style.min862f.css}" rel="stylesheet"/>
+    <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/modules/drilldown.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://code.highcharts.com.cn/highcharts/themes/grid-light.js"></script>
+
+    <style type="text/css">
+        .topPicture {
+            background: url(/img/baanner.png);
+            background-size: 100% 100%;
+            width: 100%;
+        }
+
+        .top2Picture {
+            background: #f1f2f6;
+            width: 100%;
+            height: auto;
+        }
+
+        .top3Picture {
+            background: #FFFFFF;
+            width: 100%;
+            height: auto;
+            padding-left: 15vw;
+            padding-right: 20vw;
+        }
+
+        .myDiv {
+            background: #FFFFFF;
+            border-radius: 20px; /*这句就知是重点，让边框变道为圆角*/
+            border: 1px solid #CCC; /*让边框变为1px宽度，直线，#CCC颜色*/
+            width: 50%;
+            height: 4vw;
+            margin: 0 auto;
+            font-size: 14px;
+        }
+
+        .
+        .myDiv:empty::before {
+            content: attr(placeholder);
+        }
+
+        .myDiv2 {
+            background: #fead2a;
+            border-radius: 20px; /*这句就知是重点，让边框变道为圆角*/
+            width: 11vw;
+            height: 100%;
+            float: right;
+        }
+
+        .topLi {
+            float: left;
+            width: 25%;
+            overflow: auto;
+            list-style: none;
+        }
+
+        .imgonclick {
+            cursor: hand
+        }
+
+
+    </style>
+</head>
+
+<body class="gray-bg">
+<div class="topPicture" style="text-align: center;padding-top:8vw;padding-bottom: 13.5vw">
+    <!---->
+    <div style=" margin:0 auto;">
+        <a style="color: #FFFFFF;font-size:5vw;font-weight:bold">村点管理系统</a>
+    </div>
+    <div style="text-align: center;margin-top: 2vw">
+
+        <div style=" text-align: right ;padding: 2px" class="myDiv">
+            <a style="padding: 0.5vw;float: left;width: 75%;height: 100%;vertical-align: middle;">
+            <input type="text" style="border:none;float: left;width: 100%;height:100%;outline:none;font-size:1.8vw;">
+            </a>
+            <a class="imgonclick">
+            <div class="myDiv2" style="font-size:1.8vw;vertical-align:middle;  text-align:center ; padding-top: 0.5vw ;padding-bottom: 0.5vw "onclick="window.location.href='http://ahnzw.com.cn/list-305.html'">
+
+                <span  style="color: #FFFFFF; ">农资咨询</span>
+            </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="top2Picture" style="text-align: center;">
+    <!---->
+    <ul style="overflow: auto; text-align: center;padding-left: 13vw;padding-right: 20vw">
+        <li style=" padding-left:7vw;float: left;width: 25%;overflow: auto;list-style: none">
+            <a class="imgonclick">
+                <img src="/img/xc.png" style="width: 100%;height: auto"
+                     onclick="window.location.href='http://www.pinglu.gov.cn/Category_143/Index.aspx'">
+                <div style="width:100%;">
+                    <p style="font-size: 1.5vw;color: #000000">政策宣传</p>
+                </div>
+            </a>
+        </li>
+        <li style=" padding-left:7vw;margin:0 auto ;width: 25%;overflow: auto;list-style: none" class="topLi">
+            <a class="imgonclick">
+                <img src="/img/pp.png" style="width:100%;height: auto"
+                     onclick="window.location.href='/cundian/point/openIndexHomePage?pageUrl=img/pingpai.png'">
+                <div style="width:100%;">
+                    <p style="font-size:1.5vw;color: #000000">品牌宣传</p>
+                </div>
+            </a>
+        </li>
+        <li style=" padding-left:7vw;margin:0 auto ;width: 25%;overflow: auto;list-style: none" class="topLi">
+            <a class="imgonclick">
+                <img src="/img/zd.png" style="width:100%;height: auto"
+                     onclick="window.location.href='/cundian/point/openIndexHomePage?pageUrl=img/zhandian.png'">
+                <div style="width:100%;">
+                    <p style="font-size:1.5vw;color: #000000">站点介绍</p>
+                </div>
+            </a>
+        </li>
+        <li style="padding-left:7vw;float: right;width: 25%;overflow: auto;list-style: none" class="topLi">
+            <a class="imgonclick">
+                <img src="/img/dzsw.png" style="width:100%;height: auto"
+                     onclick="window.location.href='/cundian/point/openIndexHomePage?pageUrl=img/dianzi.png'">
+                <div style="width:100%;">
+                    <p style="font-size:1.5vw;color: #000000">了解电子商务</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="top3Picture" style="text-align: center">
+    <div style="padding-left: 5vw;text-align: center;">
+        <img src="/img/daimai.jpg" style="width: 22.3vw;padding-top: 4.3vw;padding-bottom: 3.4vw">
+    </div>
+    <div style="width: 100%;height: auto">
+        <ui style="overflow: auto;">
+            <li style=" padding-left:5vw;float: left;width: 20%;overflow: auto;list-style: none">
+                <a class="imgonclick">
+                    <img src="/img/tb.png" style="width: 100%;height: auto"
+                         onclick="window.location.href='https://www.taobao.com'">
+                    <div style="width:100%;">
+                        <p style="font-size: 1.5vw;color: #000000">淘宝</p>
+                    </div>
+                </a>
+            </li>
+            <li style=" padding-left:5vw;float: left;width: 20%;overflow: auto;list-style: none">
+                <a class="imgonclick">
+                    <img src="/img/jd.png" style="width: 100%;height: auto"
+                         onclick="window.location.href='https://www.jd.com'">
+                    <div style="width:100%;">
+                        <p style="font-size: 1.5vw;color: #000000">京东</p>
+                    </div>
+                </a>
+            </li>
+            <li style=" padding-left:5vw;float: left;width: 20%;overflow: auto;list-style: none">
+                <a class="imgonclick">
+                    <img src="/img/tm.png" style="width:100%;height: auto"
+                         onclick="window.location.href='https://www.tmall.com/'">
+                    <div style="width:100%;">
+                        <p style="font-size: 1.5vw;color: #000000">天猫</p>
+                    </div>
+                </a>
+            </li>
+
+            <li style=" padding-left:5vw;float: left;width: 20%;overflow: auto;list-style: none">
+                <a class="imgonclick">
+                    <img src="/img/pdd.png" style="width: 100%;height: auto"
+                         onclick="window.location.href=' https://www.pinduoduo.com'">
+                    <div style="width:100%;">
+                        <p style="font-size: 1.5vw;color: #000000">拼多多</p>
+                    </div>
+                </a>
+            </li>
+            <li style=" padding-left:5vw;float: left;width: 20%;overflow: auto;list-style: none">
+                <a class="imgonclick">
+                    <img src="/img/sn.png" style="width: 100%;height: auto"
+                         onclick="window.location.href='https://www.suning.com/'">
+                    <div style="width:100%;">
+                        <p style="font-size: 1.5vw;color: #000000">苏宁易购</p>
+                    </div>
+                </a>
+            </li>
+        </ui>
+    </div>
+    <div style="padding-left: 5vw;text-align: center;">
+        <img src="/img/kuaidi.jpg" style="width: 22.3vw;padding-top: 4.3vw;padding-bottom: 3.4vw">
+    </div>
+    <div style="width: 100%;height: auto">
+        <ui style="overflow: auto;">
+            <li style=" padding-left:5vw;float: left;width: 50%;overflow: auto;list-style: none">
+                <a class="imgonclick">
+                    <img src="/img/1.png" style="width: 100%;height: auto"
+                         onclick="window.location.href='https://www.kuaidi100.com'">
+                </a>
+            </li>
+            <li style=" padding-left:5vw;float: left;width: 50%;overflow: auto;list-style: none">
+                <a class="imgonclick">
+                    <img src="/img/2.png" style="width: 100%;height: auto"
+                         onclick="window.location.href='https://www.kuaidi100.com/courier/'">
+                </a>
+            </li>
+        </ui>
+    </div>
+    <div style="padding-left: 5vw;text-align: center;">
+        <a class="imgonclick">
+            <img src="/img/xinxi.jpg" style="width: 22.3vw;padding-top: 4.3vw;padding-bottom: 3.4vw">
+        </a>
+    </div>
+    <div style="padding-left: 5vw;text-align: center;">
+        <a class="imgonclick">
+            <img src="/img/3.png" style="width: 100%;"
+                 onclick="window.location.href='https://www.zquan.cc/0359plshxd/?_8e_'">
+        </a>
+    </div>
+    <div style="padding-left: 5vw;text-align: center;">
+        <a class="imgonclick">
+            <img src="/img/news.jpg" style="width: 22.3vw;padding-top: 4.3vw;padding-bottom: 3.4vw">
+        </a>
+    </div>
+    <div style="padding-left: 5vw;text-align: center;">
+        <a class="imgonclick">
+            <img src="/img/4.png" style="width: 100%;"
+                 onclick="window.location.href='http://site.sxgov.cn/pinglu/node_282826.htm'">
+        </a>
+    </div>
+</div>
+
+</body>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/ajax/libs/flot/jquery.flot.js}"></script>
+
+<th:block th:include="include :: sparkline-js"/>
+<script th:inline="javascript">
+
+    function onclickon() {
+        onmouseover = "this.style.cursor='hand'";
+    }
+
+
+</script>
+</html>
