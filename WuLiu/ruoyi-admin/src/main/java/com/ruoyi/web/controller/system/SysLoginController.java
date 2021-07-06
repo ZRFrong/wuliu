@@ -55,12 +55,12 @@ public class SysLoginController extends BaseController {
     public String login(HttpServletRequest request, HttpServletResponse response) {
         // 如果是Ajax请求，返回Json字符串。
 
-/*        if (ServletUtils.isAjaxRequest(request)) {
+        if (ServletUtils.isAjaxRequest(request)) {
             return ServletUtils.renderString(response, "{\"code\":\"1\",\"msg\":\"未登录或登录超时。请重新登录\"}");
         }
 
-       return "login";*/
-       return "redirect:https://peasetech.cn/admin/public/regulatory";
+       return "login";
+       //return "redirect:https://peasetech.cn/admin/public/regulatory";
     }
     private static Logger logger = LoggerFactory.getLogger(SysLoginController.class);
 
